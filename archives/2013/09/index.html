@@ -52,6 +52,103 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-09-06T06:07:41.000Z"><a href="/2013/09/06/nslogger日志工具/">Sep 6 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/09/06/nslogger日志工具/">NSLogger日志工具</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><img src="https://github.com/fpillet/NSLogger/raw/master/Screenshots/icon_small.png" alt=""></p>
+<p>源码：<a href="https://github.com/fpillet/NSLogger" target="_blank"><a href="https://github.com/fpillet/NSLogger">https://github.com/fpillet/NSLogger</a></a></p>
+<h3>特点</h3>
+<ul>
+<li>直接在日志工具桌面端查看日志，使用网络查看日志</li>
+<li>不需要再将iPhone连接到电脑上才能看日志</li>
+<li>支持通过互联网传送日志</li>
+<li>可以输出图片日志</li>
+<li>可自定义日志等级</li>
+</ul>
+<p><img src="https://github.com/fpillet/NSLogger/raw/master/Screenshots/mainwindow.png" alt=""></p>
+<p>操作指南查看<a href="https://github.com/fpillet/NSLogger/wiki/" target="_blank">NSLogger wiki</a></p>
+<p>应用程序使用接口：NSlogger <a href="https://github.com/fpillet/NSLogger/wiki/NSLogger-API" target="_blank">trace APIs</a>.桌面工具运行在<strong>Mac OS X 10.6 or later</strong></p>
+<hr>
+<h3>安装</h3>
+<p>NSLogger分为两部分，LoggerClient和NSLogger Viewer， LoggerClient是置入你APP的客户端，NSLogger Viewer是一个mac端日志分析器，NSLogger的日志可以通过网络传输到这个日志分析器中。</p>
+<p>NSLogger 支持<a href="https://github.com/CocoaPods/CocoaPods" target="_blank">Pod</a>方式安装,在你的APP中配置Podfile</p>
+<figure class="highlight lang-cpp"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>pod 'NSLogger'
+pod install 
+</pre></td></tr></table></figure>
+
+
+<p>如果不支持Pod，可以直接将LoggerClient文件放入App下</p>
+<p><a href="http://pan.baidu.com/share/link?shareid=2325915101&amp;uk=2066981050" target="_blank">NSLogger Viewer</a> - 这个事编译好的PC客户端<em>NSLogger Viewer</em></p>
+<hr>
+<h3>使用</h3>
+<ul>
+<li><strong>#import “LoggerClient.h”</strong></li>
+<li>设置客户端网络监控配置</li>
+</ul>
+<figure class="highlight lang-cpp"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>LoggerSetViewerHost(NULL, (CFStringRef)@“<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>”, (UInt32)<span class="number">50000</span>);
+</pre></td></tr></table></figure>
+
+
+<ul>
+<li>除了基本的日志可以打印图片日志</li>
+</ul>
+<figure class="highlight lang-cpp"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>UIImage *img = ONEDefaultImageWithName(@<span class="string">"actionBar"</span>);
+CGSize sz = img.size;
+LogImageData(@<span class="string">"image"</span>, <span class="number">0</span>, sz.width, sz.height, UIImagePNGRepresentation(img));
+</pre></td></tr></table></figure>
+
+
+<ul>
+<li>重定向NSLog，可以这么做</li>
+</ul>
+<figure class="highlight lang-cpp"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>define NSLog(...) LogMessageF( __FILE__,__LINE__,__FUNCTION__, NULL, <span class="number">0</span>, __VA_ARGS__)
+</pre></td></tr></table></figure>
+
+
+<ul>
+<li>打开NSLogger Viewer客户端，在Preferences的Network中，勾选 Listen for loggers on TCP port.端口默认</li>
+</ul>
+<p>友情提示</p>
+<ul>
+<li>如果Xcode编译后，没有发送数据到客户端，可以先 clean 一下。</li>
+<li>客户端建议用 TCP 协议连接,这样监听端口可以固定</li>
+<li>点窗口左下角的 f 可以看到对应的日志文件与行号</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-09-06T06:02:02.000Z"><a href="/2013/09/06/hello-world/">Sep 6 2013</a></time>
       
       
